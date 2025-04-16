@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园快递代收服务</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b349;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .service {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .service h2 {
+            color: #333;
+        }
+        .search-box {
+            margin: 20px 0;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .return-reminder {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>校园快递代收服务</h1>
+    </header>
+    <nav>
+        <a href="#express">快递代收</a>
+        <a href="#share">共享物品</a>
+        <a href="#food">外卖配送</a>
+    </nav>
+    <div class="container">
+        <div id="express" class="service">
+            <h2>快递代收服务</h2>
+            <p>提供快递包裹集中代收和定时配送服务，让你的校园生活更轻松。</p>
+            <div class="search-box">
+                <input type="text" id="trackingNumber" placeholder="请输入快递单号" />
+                <button onclick="queryExpress()">查询</button>
+            </div>
+            <div id="expressResult" class="result-box"></div>
+        </div>
+        <div id="share" class="service">
+            <h2>共享物品平台</h2>
+            <p>书籍、自行车、充电宝等物品的线上预约和线下取用服务，满足你的临时需求。</p>
+            <div class="search-box">
+                <input type="text" id="item_name" placeholder="请输入物品名称" />
+                <button onclick="queryItem()">查询</button>
+            </div>
+            <div id="shareResult" class="result-box"></div>
+            <div class="return-reminder">
+                <p>请在规定时间内归还物品，谢谢合作！</p>
+            </div>
+        </div>
+        <div id="food" class="service">
+            <h2>校园外卖配送</h2>
+            <p>优化配送路线，确保美食快速送达，不再错过每一顿美味。</p>
+            <div class="search-box">
+                <input type="text" id="order_number" placeholder="请输入订单号" />
+                <button onclick="queryOrder()">查询</button>
+            </div>
+            <div id="foodResult" class="result-box"></div>
+        </div>
+    </div>
+    <footer>
+        <p>版权所有 &copy; 2024 校园快递代收服务</p>
+    </footer>
+
+    <script>
+        function queryExpress() {
+            var trackingNumber = document.getElementById('trackingNumber').value;
+            var resultDiv = document.getElementById('expressResult');
+            resultDiv.innerHTML = '<p>查询结果：快递单号 ' + trackingNumber + ' 的最新状态是：已送达。</p>';
+        }
+
+        function queryItem() {
+            var itemName = document.getElementById('item_name').value;
+            var resultDiv = document.getElementById('shareResult');
+            resultDiv.innerHTML = '<p>查询结果：' + itemName + ' 当前可预约。</p>';
+        }
+
+        function queryOrder() {
+            var orderNumber = document.getElementById('order_number').value;
+            var resultDiv = document.getElementById('foodResult');
+            resultDiv.innerHTML = '<p>查询结果：订单号 ' + orderNumber + ' 的状态是：配送中。</p>';
+        }
+    </script>
+</body>
+</html>
